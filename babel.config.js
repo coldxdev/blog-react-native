@@ -7,10 +7,12 @@ module.exports = function (api) {
                 'module-resolver',
                 {
                     alias: {
-                        '@components': './src/components',
-                        '@consts': './src/consts',
-                        '@redux': './src/redux',
+                        '@components': './src/components/',
+                        '@consts': './src/consts/',
+                        '@redux': './src/redux/',
                         '@assets': './src/assets/',
+                        '@screens': './src/screens/',
+                        '@global-types': './src/types/',
                     },
                 },
             ],
