@@ -101,7 +101,7 @@ const PostCard: React.FC<PostCardProps> = ({
 
     return (
         <PostBox {...restProps}>
-            <PostTitle onPress={() => navigation.navigate(POST_PATH, { id })}>
+            <PostTitle onPress={() => navigation.navigate(POST_PATH, { postId: id })}>
                 {title}
             </PostTitle>
             <PostText>{body}</PostText>

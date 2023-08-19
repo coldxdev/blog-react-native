@@ -1,7 +1,7 @@
 import Layout from '@components/Layout';
 import PostCard from '@components/PostCard';
 import StyledButton from '@components/StyledButton';
-import { mockupPosts } from '../../mockup';
+import { mockupPosts } from '../mockup';
 import React from 'react';
 import { FlatList } from 'react-native';
 
