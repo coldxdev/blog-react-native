@@ -3,17 +3,33 @@
         {
             "id": "1",
             "title": "More of the Best Summer Dishes In Dublin Right Now",
-            "body": "It’s been a summer of extremes, from the record-setting rain that’s left all of Ireland in a slump, to the wildfire-fuelling heatwaves somehow making us feel lucky by comparison."
+            "body": "It’s been a summer of extremes, from the record-setting rain that’s left all of Ireland in a slump, to the wildfire-fuelling heatwaves somehow making us feel lucky by comparison.",
+            "comments": [
+                { "id": "1", "text": "Very good post", "postId": "1" },
+                {
+                    "id": "2",
+                    "text": "Inspirational designs, illustrations, and graphic elements from the world’s best designers. Want more inspiration? Browse our search results.",
+                    "postId": "1"
+                },
+                { "id": "3", "text": "The greatest post ever!", "postId": "1" },
+                {
+                    "id": "4",
+                    "text": "It’s been a summer of extremes, from the record-setting rain that’s left all of Ireland in a slump, to the wildfire-fuelling heatwaves somehow making us feel lucky by comparison.",
+                    "postId": "1"
+                }
+            ]
         },
         {
             "id": "2",
             "title": "Courgette flower, Volpe Nera",
-            "body": "The humble courgette is a great example of a vegetable we’ve gotten used to seeing on shelves year-round, but it’s right in the midst of peak season now. With that comes its beautiful flowers, with paper thin leaves just begging to be stuffed and fried. Volpe Nera have done just that, with a ricotta filling and truffle honey glaze bringing out the best of these fresh summer flavours."
+            "body": "The humble courgette is a great example of a vegetable we’ve gotten used to seeing on shelves year-round, but it’s right in the midst of peak season now. With that comes its beautiful flowers, with paper thin leaves just begging to be stuffed and fried. Volpe Nera have done just that, with a ricotta filling and truffle honey glaze bringing out the best of these fresh summer flavours.",
+            "comments": []
         },
         {
             "id": "3",
             "title": "Custard and peach cinnamon rolls, BaaBaa",
-            "body": "There’s no complimentary combo we love as much at this time of year as ripe peaches and thyme, so we went wide-eyed with interest to see Chapelizod’s BaaBaa working the two together in a cinnamon roll. "
+            "body": "There’s no complimentary combo we love as much at this time of year as ripe peaches and thyme, so we went wide-eyed with interest to see Chapelizod’s BaaBaa working the two together in a cinnamon roll. ",
+            "comments": []
         }
     ],
     "comments": [
