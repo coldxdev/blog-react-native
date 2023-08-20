@@ -1,4 +1,5 @@
-import { Post, Posts } from '@screens';
+import Post from '../screens/Post';
+import Posts from '../screens/Posts';
 import { POSTS_PATH, POST_PATH } from './paths';
 
 const routes = [

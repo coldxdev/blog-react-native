@@ -4,9 +4,10 @@ export const COLORS = {
     gray: '#848388',
     background: '#F2F1F6',
     white: '#ffffff',
-    purple: "#614BC3",
-    green: "#A8DF8E",
-    red: "#CA6767",
+    purple: '#614BC3',
+    green: '#A8DF8E',
+    red: '#CA6767',
+    blue: '#2485e6',
 };
 
 export const SIZES = {};

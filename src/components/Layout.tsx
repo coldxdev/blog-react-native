@@ -1,20 +1,33 @@
 import { COLORS } from '@consts/theme';
 import React from 'react';
-import { ViewProps } from 'react-native';
-import styled from 'styled-components/native';
+import { KeyboardAvoidingView, Platform, StyleSheet, View, ViewProps } from 'react-native';
 
 interface LayoutProps extends ViewProps {
     children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-    const StyledLayout = styled.View`
-        padding: 0 15px 15px;
-        background-color: ${COLORS.background};
-        flex: 1;
-    `;
-
-    return <StyledLayout>{children}</StyledLayout>;
+    return (
+        <View style={styles.layout}>
+            <KeyboardAvoidingView
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                style={styles.container}
+            >
+                {children}
+            </KeyboardAvoidingView>
+        </View>
+    );
 };
 
 export default Layout;
+
+const styles = StyleSheet.create({
+    layout: {
+        padding: 15,
+        backgroundColor: COLORS.background,
+        flex: 1,
+    },
+    container: {
+        flex: 1
+    }
+});

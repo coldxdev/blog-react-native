@@ -4,71 +4,90 @@ import {
     commentsIcon,
     deleteIcon,
     editIcon,
+    linkIcon,
     tickIcon,
 } from '@assets/icons';
 import StyledIcon from '@components/StyledIcon';
 import { COLORS, FONT } from '@consts/theme';
 import { IPost } from '@global-types/global';
-import { Alert, ViewProps } from 'react-native';
-import styled from 'styled-components/native';
+import {
+    Alert,
+    StyleSheet,
+    Text,
+    TextInput,
+    View,
+    ViewProps,
+} from 'react-native';
 import IconButton from './IconButton';
 import { POST_PATH } from '@consts/paths';
 import { useNavigation } from '@react-navigation/native';
 
 interface PostCardProps extends Omit<IPost, 'comments'>, Omit<ViewProps, 'id'> {
     commentsCount?: number;
+    onDeletePost: (id: string) => void;
+    onSavePost: (id: string, title: string, body: string) => void;
 }
-
-const PostBox = styled.View`
-    padding: 15px;
-    border-radius: 10px;
-    background-color: ${COLORS.white};
-`;
-
-const PostTitle = styled.Text`
-    font-family: ${FONT.SEMIBOLD};
-    font-size: 18px;
-    line-height: 22px;
-    margin-bottom: 15px;
-`;
-const PostText = styled.Text`
-    font-family: ${FONT.REGULAR};
-    font-size: 16px;
-    line-height: 20px;
-    margin-bottom: 20px;
-`;
-
-const PostBottom = styled.View`
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 10px;
-`;
-
-const PostComments = styled.View`
-    flex-direction: row;
-    align-items: center;
-`;
-
-const PostCommentsText = styled.Text`
-    font-size: 14px;
-    font-family: ${FONT.SEMIBOLD};
-    margin-left: 10px;
-`;
-
-const PostActions = styled.View`
-    flex-direction: row;
-    align-items: center;
-    gap: 15px;
-`;
 
 const PostCard: React.FC<PostCardProps> = ({
     body,
     id,
     title,
     commentsCount,
+    onDeletePost,
+    onSavePost,
+    style,
     ...restProps
 }) => {
     const [isEditing, setIsEditing] = React.useState(false);
+    const [titleInput, setTitleInput] = React.useState(title);
+    const [bodyInput, setBodyInput] = React.useState(body);
+
+    const styles = StyleSheet.create({
+        box: {
+            padding: 15,
+            borderRadius: 10,
+            backgroundColor: COLORS.white,
+        },
+        top: {
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            gap: 15,
+        },
+        title: {
+            fontFamily: FONT.SEMIBOLD,
+            fontSize: 18,
+            lineHeight: 22,
+            marginBottom: 15,
+            color: isEditing ? COLORS.blue : COLORS.primary,
+            flexShrink: 1,
+        },
+        text: {
+            fontFamily: FONT.REGULAR,
+            fontSize: 16,
+            lineHeight: 20,
+            marginBottom: 20,
+            color: isEditing ? COLORS.blue : COLORS.primary,
+        },
+        bottom: {
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            gap: 10,
+        },
+        comments: {
+            flexDirection: 'row',
+            alignItems: 'center',
+        },
+        commentsText: {
+            fontSize: 14,
+            fontFamily: FONT.SEMIBOLD,
+            marginLeft: 10,
+        },
+        actions: {
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: 15,
+        },
+    });
 
     const navigation = useNavigation();
 
@@ -77,14 +96,16 @@ const PostCard: React.FC<PostCardProps> = ({
     };
 
     const onSave = () => {
-        Alert.alert('Saved');
+        onSavePost(id, titleInput, bodyInput);
+        setIsEditing(false);
     };
 
     const onEdit = () => {
         setIsEditing(state => !state);
     };
+
     const onDelete = () => {
-        Alert.alert('Delete');
+        onDeletePost(id);
     };
 
     const postButtons = isEditing ? (
@@ -100,22 +121,43 @@ const PostCard: React.FC<PostCardProps> = ({
     );
 
     return (
-        <PostBox {...restProps}>
-            <PostTitle onPress={() => navigation.navigate(POST_PATH, { postId: id })}>
-                {title}
-            </PostTitle>
-            <PostText>{body}</PostText>
-            <PostBottom>
-                <PostComments>
-                    <StyledIcon source={commentsIcon} />
-                    <PostCommentsText>
-                        {commentsCount} comments
-                    </PostCommentsText>
-                </PostComments>
+        <View style={[styles.box, style]} {...restProps}>
+            <View style={styles.top}>
+                <TextInput
+                    style={styles.title}
+                    editable={isEditing}
+                    value={titleInput}
+                    onChangeText={setTitleInput}
+                    spellCheck={false}
+                    multiline
+                />
+                <IconButton
+                    iconSrc={linkIcon}
+                    onPress={() =>
+                        navigation.navigate(POST_PATH, { postId: id })
+                    }
+                />
+            </View>
 
-                <PostActions>{postButtons}</PostActions>
-            </PostBottom>
-        </PostBox>
+            <TextInput
+                style={styles.text}
+                value={bodyInput}
+                onChangeText={setBodyInput}
+                editable={isEditing}
+                spellCheck={false}
+                multiline
+            />
+            <View style={styles.bottom}>
+                <View style={styles.comments}>
+                    <StyledIcon source={commentsIcon} />
+                    <Text style={styles.commentsText}>
+                        {commentsCount} comments
+                    </Text>
+                </View>
+
+                <View style={styles.actions}>{postButtons}</View>
+            </View>
+        </View>
     );
 };
 

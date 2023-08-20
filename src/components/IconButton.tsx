@@ -2,10 +2,11 @@ import StyledIcon from '@components/StyledIcon';
 import React from 'react';
 import {
     ImageSourcePropType,
-	TouchableOpacity,
+    TouchableOpacityProps,
+    TouchableOpacity,
 } from 'react-native';
 
-interface Props extends TouchableOpacity {
+interface Props extends TouchableOpacityProps {
     iconSrc: ImageSourcePropType;
     size?: string;
 }

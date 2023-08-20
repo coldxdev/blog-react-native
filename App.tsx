@@ -1,7 +1,5 @@
 import { useFonts } from 'expo-font';
 import Router from '@components/Router';
-import styled from 'styled-components/native';
-import Layout from '@components/Layout';
 
 const App = () => {
     const [fontsLoaded] = useFonts({

@@ -13,6 +13,8 @@ module.exports = function (api) {
                         '@assets': './src/assets/',
                         '@screens': './src/screens/',
                         '@global-types': './src/types/',
+                        '@hooks': './src/hooks/',
+                        '@utils': './src/utils/',
                     },
                 },
             ],
