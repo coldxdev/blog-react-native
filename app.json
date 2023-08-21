@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.coldxdev.blogreactnative"
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "9a69094e-da7d-46c2-8c4d-4b0275c2428f"
+      }
     }
   }
 }

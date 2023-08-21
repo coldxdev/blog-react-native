@@ -202,12 +202,20 @@ export const editComment =
             const commentIndex = post.comments.findIndex(
                 comment => comment.id === commentId
             );
+            const filteredComments = post.comments.filter(
+                comment => comment.id !== commentId
+            );
+            const updatedComment = { ...post.comments[commentIndex], text };
+            const updatedPost = {
+                ...post,
+                comments: [updatedComment, ...filteredComments],
+            };
 
-            post.comments[commentIndex].text = text;
+            post.comments[commentIndex] = updatedComment;
 
             await axios.put(`${API_URL}/posts/${postId}`, post);
 
-            dispatch(updatePost({ postId, updatedPost: post }));
+            dispatch(updatePost({ postId, updatedPost }));
         } catch (e) {
             errorHandler(e);
         }

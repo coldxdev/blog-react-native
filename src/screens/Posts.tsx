@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Layout from '@components/Layout';
 import PostCard from '@components/PostCard';
 import StyledButton from '@components/StyledButton';
-import { FlatList, Keyboard, StyleSheet, TextInput } from 'react-native';
+import {
+    FlatList,
+    StyleSheet,
+    TextInput,
+} from 'react-native';
 import { COLORS } from '@consts/theme';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { Loading } from '@components/Loader';
@@ -29,6 +33,7 @@ const Posts: React.FC = () => {
     };
 
     const onAddPost = () => {
+        if (!inputText || !inputTitle) return;
         dispatch(createPost(inputTitle, inputText));
         setInputText('');
         setInputTitle('');

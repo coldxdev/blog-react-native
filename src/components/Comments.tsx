@@ -9,7 +9,7 @@ interface CommentsProps {
     items: IComment[];
     onAddComment: (text: string) => void;
     onDeleteComment: (postId: string, commentId: string) => void;
-    onSaveComment: (postId: string, commentId: string, text:string) => void;
+    onSaveComment: (postId: string, commentId: string, text: string) => void;
 }
 
 const Comments: React.FC<CommentsProps> = ({
@@ -21,6 +21,7 @@ const Comments: React.FC<CommentsProps> = ({
     const [textInput, setTextInput] = useState('');
 
     const onSend = () => {
+        if (!textInput) return;
         onAddComment(textInput);
         setTextInput('');
     };
